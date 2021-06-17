@@ -12,7 +12,7 @@
         <activity android:name=".MainActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize">
-<!--            ui will be resized after keyborad will show-->
+<!--            ui will be resized after keyboard will show>-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
