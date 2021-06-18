@@ -8,11 +8,19 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/NoActionBarTheme">
-        <activity android:name=".MainActivity"
+        android:theme="@style/Theme.AppCompat">
+        <activity
+            android:name=".QuizCategoriesActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize">
-<!--            ui will be resized after keyboard will show>-->
+            android:windowSoftInputMode="adjustResize"
+            android:theme="@style/NoActionBarTheme"/>
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"
+            android:theme="@style/NoActionBarTheme">
+
+            <!-- ui will be resized after keyboard will show> -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
