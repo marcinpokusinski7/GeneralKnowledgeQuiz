@@ -3,23 +3,17 @@ package com.example.generalknowledgequiz.database;
 import android.provider.BaseColumns;
 
 public final class QuizContract {
+
     public static class GeneralQuestions implements BaseColumns {
         public static final String TABLE_NAME = "general_questions";
-        public static final String COLUMN_NAME_TITLE = "general_questions";
-        public static final String COLUMN_NAME_SUBTITLE = "general_questions_two";
+        public static final String COLUMN_QUESTION = "question";
+        public static final String COLUMN_OPTION1 = "option1";
+        public static final String COLUMN_OPTION2 = "option2";
+        public static final String COLUMN_OPTION3 = "option3";
+        public static final String COLUMN_OPTION4 = "option4";
+        public static final String COLUMN_ANSWER_NR = "answer_nr";
     }
 
     private QuizContract() {
     }
-
-    private static final String SQL_CREATE_ENTRIES =
-            "CREATE TABLE " + GeneralQuestions.TABLE_NAME + " (" +
-                    GeneralQuestions._ID + " INTEGER PRIMARY KEY," +
-                    GeneralQuestions.COLUMN_NAME_TITLE + " TEXT," +
-                    GeneralQuestions.COLUMN_NAME_SUBTITLE + " TEXT)";
-
-    private static final String SQL_DELETE_ENTRIES =
-            "DROP TABLE IF EXISTS " + GeneralQuestions.TABLE_NAME;
-
-
 }

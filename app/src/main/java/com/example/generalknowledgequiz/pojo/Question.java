@@ -8,6 +8,7 @@ public class Question {
     private String option4;
     private int answerNr;
 
+
     public Question(String question, String option1, String option2, String option3, String option4, int answerNr) {
         this.question = question;
         this.option1 = option1;
@@ -19,6 +20,7 @@ public class Question {
 
     public Question(){
     }
+
 
     public String getQuestion() {
         return question;
