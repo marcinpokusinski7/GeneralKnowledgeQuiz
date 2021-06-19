@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
            String textString = text_start_name.getText().toString();
             if (textString.matches("")) {
                 Toast.makeText(MainActivity.this, "Please enter name", Toast.LENGTH_SHORT).show();
-                System.out.println("Dziala");
             } else {
                 Intent intent = new Intent(this, QuizCategoriesActivity.class);
                 startActivity(intent);
