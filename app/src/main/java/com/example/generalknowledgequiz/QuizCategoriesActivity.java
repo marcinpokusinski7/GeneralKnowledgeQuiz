@@ -1,10 +1,14 @@
 package com.example.generalknowledgequiz;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.annotation.SuppressLint;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.generalknowledgequiz.factory.LevelFactory;
@@ -23,6 +27,8 @@ public class QuizCategoriesActivity extends AppCompatActivity {
         TextView average = findViewById(R.id.difficulty_average);
         TextView hard = findViewById(R.id.difficulty_hard);
 
+        Button btn_easy = findViewById(R.id.btn_go_easy);
+
         LevelFactory levelFactory = new LevelFactory();
         QuizLevel quizLevelEasy = levelFactory.getLevel(1);
         QuizLevel quizLevelAverage = levelFactory.getLevel(2);
@@ -36,5 +42,12 @@ public class QuizCategoriesActivity extends AppCompatActivity {
         average.setText(new StringBuilder().append(quizLevelAverage.difficultyLevel().toString()));
         hard.setText(new StringBuilder().append(quizLevelHard.difficultyLevel().toString()));
 
+        btn_easy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+               fragmentTransaction.replace(R.id.difficulty_activity, new QuizFragment()).commit();
+            }
+        });
     }
 }
