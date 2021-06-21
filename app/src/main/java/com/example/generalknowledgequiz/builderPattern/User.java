@@ -11,6 +11,10 @@ public class User {
     private String password;
     private String email;
 
+    @Override
+    public String toString() {
+        return login;
+    }
 
     public static final class Builder {
         private String login;
@@ -34,6 +38,7 @@ public class User {
             this.email = email;
             return this;
         }
+
 
         public User create() {
 

@@ -56,7 +56,7 @@ public class RegisterFragment extends Fragment {
                             .create();
                     editor.putString(KEY_USER, user.toString());
                     editor.apply();
-                    Intent intent = new Intent(getActivity(), RegisterFragment.class);
+                    Intent intent = new Intent(getActivity(), QuizCategoriesActivity.class);
                     startActivity(intent);
                 }
 

@@ -1,17 +1,18 @@
-package com.example.generalknowledgequiz.pojo;
+package com.example.generalknowledgequiz.db;
 
 public class Question {
     private String question;
-    private int questionLevel;
     private String option1;
     private String option2;
     private String option3;
     private String option4;
     private int answerNr;
 
-    public Question(String question, int questionLevel, String option1, String option2, String option3, String option4, int answerNr) {
+    public Question() {
+    }
+
+    public Question(String question, String option1, String option2, String option3, String option4, int answerNr) {
         this.question = question;
-        this.questionLevel = questionLevel;
         this.option1 = option1;
         this.option2 = option2;
         this.option3 = option3;
@@ -27,13 +28,6 @@ public class Question {
         this.question = question;
     }
 
-    public int getQuestionLevel() {
-        return questionLevel;
-    }
-
-    public void setQuestionLevel(int questionLevel) {
-        this.questionLevel = questionLevel;
-    }
 
     public String getOption1() {
         return option1;
