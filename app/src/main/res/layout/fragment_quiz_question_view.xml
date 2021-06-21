@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F5F5F5"
-    android:fillViewport="true"
-    tools:context=".QuizFragment">
+    android:fillViewport="true">
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
@@ -25,11 +24,11 @@
             android:textColor="#363A43"
             android:textSize="22sp" />
 
-<!--        <ImageView-->
-<!--            android:id="@+id/iv_image"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="16dp" />-->
+        <!--        <ImageView-->
+        <!--            android:id="@+id/iv_image"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginTop="16dp" />-->
 
         <LinearLayout
             android:id="@+id/ll_progress_detail"

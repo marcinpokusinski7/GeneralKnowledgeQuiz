@@ -1,13 +1,13 @@
-package com.example.generalknowledgequiz.factory;
+package com.example.generalknowledgequiz.factoryPattern;
 
 import com.example.generalknowledgequiz.pojo.Question;
 
 import java.util.List;
 
-public class Easy implements QuizLevel{
+public class GeneralKnowledge implements QuizLevel{
     @Override
     public String difficultyLevel() {
-        return "Easy";
+        return "General Quiz";
     }
 
     public List<Question> getQuestions(List<Question> questionList){

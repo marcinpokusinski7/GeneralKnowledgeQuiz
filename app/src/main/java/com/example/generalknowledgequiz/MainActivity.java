@@ -2,8 +2,11 @@ package com.example.generalknowledgequiz;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatEditText;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,14 +16,19 @@ import android.widget.Toast;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class MainActivity extends AppCompatActivity {
+    SharedPreferences sharedPreferences;
+    private static final String KEY_USER = "user";
+    private static final String SHARED_PREF_NAME = "mypref";
 
+    Button btn_start, btn_sign_in;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button btn_start = findViewById(R.id.start);
+        btn_sign_in = findViewById(R.id.btn_sign_in);
+        btn_start = findViewById(R.id.start);
         TextInputEditText text_start_name = findViewById(R.id.text_start_name);
 
         View decorView = getWindow().getDecorView(); // Hide system ui bar
@@ -28,9 +36,17 @@ public class MainActivity extends AppCompatActivity {
                 View.SYSTEM_UI_FLAG_FULLSCREEN
         );
 
+        sharedPreferences = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
+        String user = sharedPreferences.getString(KEY_USER, null);
+
+        if (user != null) {
+            Intent intent = new Intent(MainActivity.this, QuizCategoriesActivity.class);
+            startActivity(intent);
+        }
+
 
         btn_start.setOnClickListener(view -> {
-           String textString = text_start_name.getText().toString();
+            String textString = text_start_name.getText().toString();
             if (textString.matches("")) {
                 Toast.makeText(MainActivity.this, "Please enter name", Toast.LENGTH_SHORT).show();
             } else {
@@ -39,6 +55,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
+        });
+
+        btn_sign_in.setOnClickListener(view -> {
+            FragmentManager manager = getSupportFragmentManager();
+            FragmentTransaction transaction = manager.beginTransaction();
+            transaction.replace(R.id.main_activity, new RegisterFragment(), "reg");
+            transaction.addToBackStack(null);
+            transaction.commit();
         });
 
     }

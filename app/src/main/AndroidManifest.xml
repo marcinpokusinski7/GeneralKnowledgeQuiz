@@ -9,16 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat">
+        <activity android:name=".QuizView"></activity>
         <activity
             android:name=".QuizCategoriesActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize"
-            android:theme="@style/NoActionBarTheme"/>
+            android:theme="@style/NoActionBarTheme"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize"
-            android:theme="@style/NoActionBarTheme">
+            android:theme="@style/NoActionBarTheme"
+            android:windowSoftInputMode="adjustResize">
 
             <!-- ui will be resized after keyboard will show> -->
             <intent-filter>
