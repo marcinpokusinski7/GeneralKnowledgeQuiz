@@ -55,11 +55,9 @@ public class QuizCategoriesActivity extends AppCompatActivity {
         btn_easy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentManager manager = getSupportFragmentManager();
-                FragmentTransaction transaction = manager.beginTransaction();
-                transaction.replace(R.id.difficulty_activity, new QuizQuestionView(), "quiz");
-                transaction.addToBackStack(null);
-                transaction.commit();
+                Intent intent = new Intent(QuizCategoriesActivity.this, QuizQuestionActivity.class);
+                startActivity(intent);
+
             }
         });
     }

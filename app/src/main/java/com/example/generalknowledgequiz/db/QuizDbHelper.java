@@ -12,7 +12,7 @@ import java.util.List;
 
 public class QuizDbHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "test.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 7;
     private SQLiteDatabase db;
     public QuizDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -27,6 +27,7 @@ public class QuizDbHelper extends SQLiteOpenHelper {
                 RandomQuestions.COLUMN_OPTION1 + " TEXT, " +
                 RandomQuestions.COLUMN_OPTION2 + " TEXT, " +
                 RandomQuestions.COLUMN_OPTION3 + " TEXT, " +
+                RandomQuestions.COLUMN_OPTION4 + " TEXT, " +
                 RandomQuestions.COLUMN_ANSWER_NR + " INTEGER" +
                 ")";
         db.execSQL(SQL_CREATE_QUESTIONS_TABLE);
@@ -55,6 +56,7 @@ public class QuizDbHelper extends SQLiteOpenHelper {
         cv.put(RandomQuestions.COLUMN_OPTION1, question.getOption1());
         cv.put(RandomQuestions.COLUMN_OPTION2, question.getOption2());
         cv.put(RandomQuestions.COLUMN_OPTION3, question.getOption3());
+        cv.put(RandomQuestions.COLUMN_OPTION4, question.getOption4());
         cv.put(RandomQuestions.COLUMN_ANSWER_NR, question.getAnswerNr());
         db.insert(RandomQuestions.TABLE_NAME, null, cv);
     }
@@ -69,6 +71,7 @@ public class QuizDbHelper extends SQLiteOpenHelper {
                 question.setOption1(c.getString(c.getColumnIndex(RandomQuestions.COLUMN_OPTION1)));
                 question.setOption2(c.getString(c.getColumnIndex(RandomQuestions.COLUMN_OPTION2)));
                 question.setOption3(c.getString(c.getColumnIndex(RandomQuestions.COLUMN_OPTION3)));
+                question.setOption4(c.getString(c.getColumnIndex(RandomQuestions.COLUMN_OPTION4)));
                 question.setAnswerNr(c.getInt(c.getColumnIndex(RandomQuestions.COLUMN_ANSWER_NR)));
                 questionList.add(question);
             } while (c.moveToNext());

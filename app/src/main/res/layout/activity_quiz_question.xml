@@ -29,6 +29,16 @@
         <!--            android:layout_width="wrap_content"-->
         <!--            android:layout_height="wrap_content"-->
         <!--            android:layout_marginTop="16dp" />-->
+        <TextView
+            android:id="@+id/tv_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:padding="15dp"
+            android:text="Score: 0"
+            android:textColor="#7A8089"
+            android:textSize="16sp"
+            tools:text="0" />
 
         <LinearLayout
             android:id="@+id/ll_progress_detail"
@@ -61,54 +71,32 @@
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_option_one"
-            android:layout_width="match_parent"
+        <RadioGroup
+            android:id="@+id/radio_group"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@drawable/default_option_border_bg"
-            android:gravity="center"
-            android:padding="15dp"
-            android:text="Flaga"
-            android:textColor="#7A8089"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/tv_option_two"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@drawable/default_option_border_bg"
-            android:gravity="center"
-            android:padding="15dp"
-            android:text="Flaga"
-            android:textColor="#7A8089"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/tv_option_three"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@drawable/default_option_border_bg"
-            android:gravity="center"
-            android:padding="15dp"
-            android:text="Flaga"
-            android:textColor="#7A8089"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/tv_option_four"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@drawable/default_option_border_bg"
-            android:gravity="center"
-            android:padding="15dp"
-            android:text="Flaga"
-            android:textColor="#7A8089"
-            android:textSize="18sp" />
-
+            android:layout_centerVertical="true">
+            <RadioButton
+                android:id="@+id/option1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Option 1" />
+            <RadioButton
+                android:id="@+id/option2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Option 2" />
+            <RadioButton
+                android:id="@+id/option3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Option 3" />
+            <RadioButton
+                android:id="@+id/option4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Option 3" />
+        </RadioGroup>
         <Button
             android:id="@+id/btn_submit"
             android:layout_width="match_parent"
