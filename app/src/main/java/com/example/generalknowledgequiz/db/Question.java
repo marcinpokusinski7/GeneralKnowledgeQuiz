@@ -1,23 +1,34 @@
 package com.example.generalknowledgequiz.db;
 
 public class Question {
+    private int id;
     private String question;
     private String option1;
     private String option2;
     private String option3;
     private String option4;
     private int answerNr;
+    private int categoryID;
+public Question(){
 
-    public Question() {
-    }
+}
 
-    public Question(String question, String option1, String option2, String option3, String option4, int answerNr) {
+    public Question( String question, String option1, String option2, String option3, String option4, int answerNr, int categoryID) {
         this.question = question;
         this.option1 = option1;
         this.option2 = option2;
         this.option3 = option3;
         this.option4 = option4;
         this.answerNr = answerNr;
+        this.categoryID = categoryID;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getQuestion() {
@@ -27,7 +38,6 @@ public class Question {
     public void setQuestion(String question) {
         this.question = question;
     }
-
 
     public String getOption1() {
         return option1;
@@ -68,4 +78,13 @@ public class Question {
     public void setAnswerNr(int answerNr) {
         this.answerNr = answerNr;
     }
+
+    public int getCategoryID() {
+        return categoryID;
+    }
+
+    public void setCategoryID(int categoryID) {
+        this.categoryID = categoryID;
+    }
 }
+

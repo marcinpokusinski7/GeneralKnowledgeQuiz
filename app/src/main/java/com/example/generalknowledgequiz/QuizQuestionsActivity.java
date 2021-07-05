@@ -1,10 +1,12 @@
 package com.example.generalknowledgequiz;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,9 +21,9 @@ import com.example.generalknowledgequiz.db.QuizDbHelper;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
-public class QuizQuestionActivity extends AppCompatActivity {
+public class QuizQuestionsActivity extends AppCompatActivity {
+
 
     private TextView tv_question;
     private TextView tv_score;
@@ -37,17 +39,17 @@ public class QuizQuestionActivity extends AppCompatActivity {
     private List<Question> questionList;
     private int questionCounter;
     private int questionCountTotal;
+    private int catId;
     private Question currentQuestion;
     private int score;
     private boolean answered;
     private boolean tvSelected = false;
 
-
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quiz_question);
-
+        setContentView(R.layout.quiz_questions_activity);
 
 
         tv_question = findViewById(R.id.tv_question);
@@ -64,10 +66,21 @@ public class QuizQuestionActivity extends AppCompatActivity {
         btn_submit = findViewById(R.id.btn_submit);
         textColorDefaultRb = option1.getTextColors();
 
-        QuizDbHelper dbHelper = new QuizDbHelper(QuizQuestionActivity.this);
-        questionList = dbHelper.getAllQuestions();
+        QuizDbHelper dbHelper = QuizDbHelper.getInstance(QuizQuestionsActivity.this);  /// not new but getinstance
+        Intent intent = getIntent();
+
+       catId = intent.getIntExtra("quiz", 0);
+        System.out.println("----------------------------------------------------------------------------------" +catId);
+       if(catId == 1){
+           questionList = dbHelper.getQuestions(1);
+       }else{
+           questionList = dbHelper.getQuestions(2);
+       }
+
         questionCountTotal = questionList.size();
         Collections.shuffle(questionList);
+
+
 
         showNextQuestion();
         btn_submit.setOnClickListener(new View.OnClickListener() {
@@ -77,7 +90,7 @@ public class QuizQuestionActivity extends AppCompatActivity {
                     if (option1.isChecked() || option2.isChecked() || option3.isChecked() || option4.isChecked()) {
                         checkAnswer();
                     } else {
-                        Toast.makeText(QuizQuestionActivity.this, "Please select an answer", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(QuizQuestionsActivity.this, "Please select an answer", Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     showNextQuestion();
@@ -147,6 +160,7 @@ public class QuizQuestionActivity extends AppCompatActivity {
                 break;
         }
         if (questionCounter < questionCountTotal) {
+            progressBar.incrementProgressBy(1);
             btn_submit.setText("Next");
         } else {
             btn_submit.setText("Finish");
@@ -154,7 +168,7 @@ public class QuizQuestionActivity extends AppCompatActivity {
     }
 
     private void finishQuiz() {
-       finish();
+        finish();
     }
 
-}
+    }
