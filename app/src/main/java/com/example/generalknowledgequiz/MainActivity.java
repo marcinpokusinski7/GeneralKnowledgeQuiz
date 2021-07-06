@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 Intent intent = new Intent(this, QuizCategoriesActivity.class);
                 intent.putExtra("name", textString);
+                System.out.println(textString);
                 startActivity(intent);
                 finish();
             }

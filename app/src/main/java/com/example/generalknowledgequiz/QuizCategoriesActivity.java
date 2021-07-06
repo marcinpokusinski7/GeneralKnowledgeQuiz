@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.generalknowledgequiz.adapterPattern.HighscoreActivity;
 import com.example.generalknowledgequiz.factoryPattern.LevelFactory;
 import com.example.generalknowledgequiz.factoryPattern.QuizLevel;
 
@@ -19,7 +20,7 @@ public class QuizCategoriesActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_QUIZ = 1;
     SharedPreferences sharedPreferences;
 
-    Button btn_easy, btn_goPro;
+    Button btn_easy, btn_goPro, btn_go_hc;
 
     TextView difficulty_text, general, flag, programming;
 
@@ -37,18 +38,26 @@ public class QuizCategoriesActivity extends AppCompatActivity {
 
         btn_easy = findViewById(R.id.btn_go_easy);
         btn_goPro = findViewById(R.id.btn_go_program);
+        btn_go_hc = findViewById(R.id.btn_go_hc);
 
         LevelFactory levelFactory = new LevelFactory();
         QuizLevel quizLevelEasy = levelFactory.getLevel(1);
         QuizLevel quizProgramming = levelFactory.getLevel(3);
 
+
+        Intent intent = getIntent();
+
+
         sharedPreferences = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
         String user = sharedPreferences.getString(KEY_USER, null);
+        if(user != null){
+            difficulty_text.setText("Hello " + user +
+                    ",\nchoose difficulty");
+        }else {
+            difficulty_text.setText("Hello " + intent.getStringExtra("name") +
+                    ",\nchoose difficulty");
+        }
 
-
-
-        difficulty_text.setText("Hello " + user +
-                ",\nchoose difficulty");
 
         general.setText(new StringBuilder().append(quizLevelEasy.difficultyLevel().toString()));
         programming.setText(new StringBuilder().append(quizProgramming.difficultyLevel().toString()));
@@ -66,6 +75,13 @@ public class QuizCategoriesActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(QuizCategoriesActivity.this, QuizQuestionsActivity.class);
                 intent.putExtra("quiz", 1);
+                startActivity(intent);
+            }
+        });
+        btn_go_hc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(QuizCategoriesActivity.this, HighscoreActivity.class);
                 startActivity(intent);
             }
         });
