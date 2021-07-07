@@ -3,11 +3,14 @@ package com.example.generalknowledgequiz;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -16,6 +19,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.generalknowledgequiz.adapterPattern.HighscoreActivity;
 import com.example.generalknowledgequiz.db.Question;
 import com.example.generalknowledgequiz.db.QuizDbHelper;
 
@@ -23,6 +27,8 @@ import java.util.Collections;
 import java.util.List;
 
 public class QuizQuestionsActivity extends AppCompatActivity {
+    private static final String SHARED_PREF_SCORE = "latestScore";
+    private static final String SHARED_PREF_QUIZ_TYPE = "quizType";
 
 
     private TextView tv_question;
@@ -44,7 +50,7 @@ public class QuizQuestionsActivity extends AppCompatActivity {
     private int score;
     private boolean answered;
     private boolean tvSelected = false;
-
+    SharedPreferences sharedPreferences;
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +67,8 @@ public class QuizQuestionsActivity extends AppCompatActivity {
         option3 = findViewById(R.id.option3);
         option4 = findViewById(R.id.option4);
         rbGroup = findViewById(R.id.radio_group);
+
+
 
 
         btn_submit = findViewById(R.id.btn_submit);
@@ -168,6 +176,15 @@ public class QuizQuestionsActivity extends AppCompatActivity {
     }
 
     private void finishQuiz() {
+        sharedPreferences = getBaseContext().getSharedPreferences(SHARED_PREF_SCORE, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(SHARED_PREF_SCORE, tv_score.getText().toString());
+        if(catId == 1){
+            editor.putString(SHARED_PREF_QUIZ_TYPE, "Programming");
+        }else if(catId == 2){
+            editor.putString(SHARED_PREF_QUIZ_TYPE, "General");
+        }
+        editor.apply();
         finish();
     }
 

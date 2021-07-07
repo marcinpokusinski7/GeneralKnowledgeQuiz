@@ -45,7 +45,7 @@ public class RegisterFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                if (login.getText().toString().isEmpty() || login.getText().toString().isEmpty() || login.getText().toString().isEmpty()) {
+                if (login.getText().toString().isEmpty() || password.getText().toString().isEmpty() || email.getText().toString().isEmpty()) {
                     Toast.makeText(getContext(), "Enter data", Toast.LENGTH_SHORT).show();
 
                 } else {

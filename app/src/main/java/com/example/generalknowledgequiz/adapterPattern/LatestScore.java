@@ -6,11 +6,14 @@ import java.util.ArrayList;
 
 public class LatestScore {
     private String quizType;
-    private int score;
+    private String score;
 
-    public LatestScore(String quizType, int score) {
+    public LatestScore(String quizType, String score) {
         this.quizType = quizType;
         this.score = score;
+    }
+    public LatestScore(){
+
     }
 
     public String getQuizType() {
@@ -21,18 +24,18 @@ public class LatestScore {
         this.quizType = quizType;
     }
 
-    public int getScore() {
+    public String getScore() {
         return score;
     }
 
-    public void setScore(int score) {
+    public void setScore(String score) {
         this.score = score;
     }
 
 
     public ArrayList<LatestScore> createScoreList(int numScore){
         ArrayList<LatestScore> latestScoresList = new ArrayList<LatestScore>();
-        latestScoresList.add(new LatestScore("Quiz: " +quizType +" Score: ", score));
+        latestScoresList.add(new LatestScore("Quiz Type and score "," "));
 
         return latestScoresList;
     }
