@@ -1,5 +1,6 @@
 package com.example.generalknowledgequiz;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -10,19 +11,22 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.generalknowledgequiz.adapterPattern.HighscoreActivity;
+import com.example.generalknowledgequiz.adapterPattern.LastScoreActivity;
 import com.example.generalknowledgequiz.factoryPattern.LevelFactory;
 import com.example.generalknowledgequiz.factoryPattern.QuizLevel;
 
 public class QuizCategoriesActivity extends AppCompatActivity {
     private static final String SHARED_PREF_NAME = "mypref";
     private static final String KEY_USER = "user";
-    private static final int REQUEST_CODE_QUIZ = 1;
+    private static final String SHARED_PREFS = "sharedPrefs";
+    private static final String KEY_PROG = "myKey";
+    private static final String KEY_GEN= "myKey1";
+
     SharedPreferences sharedPreferences;
 
     Button btn_easy, btn_goPro, btn_go_hc;
 
-    TextView difficulty_text, general, flag, programming;
+    TextView difficulty_text, general, programmingAttempt, generalAttempt, programming;
 
 
 
@@ -32,6 +36,8 @@ public class QuizCategoriesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz_categories);
 
+        generalAttempt = findViewById(R.id.attemptGeneral);
+        programmingAttempt = findViewById(R.id.attemptProgramming);
         difficulty_text = findViewById(R.id.app_difficulty_text);
         general = findViewById(R.id.difficulty_easy);
         programming = findViewById(R.id.difficulty_programming);
@@ -46,6 +52,11 @@ public class QuizCategoriesActivity extends AppCompatActivity {
 
 
         Intent intent = getIntent();
+
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        programmingAttempt.setText(sharedPreferences.getString(KEY_PROG, ""));
+        generalAttempt.setText(sharedPreferences.getString(KEY_GEN, ""));
 
 
         sharedPreferences = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
@@ -62,9 +73,13 @@ public class QuizCategoriesActivity extends AppCompatActivity {
         general.setText(new StringBuilder().append(quizLevelEasy.difficultyLevel().toString()));
         programming.setText(new StringBuilder().append(quizProgramming.difficultyLevel().toString()));
 
+
         btn_easy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                editor.putString(KEY_GEN, quizLevelEasy.lastAttempt().toString());
+                editor.apply();
+
                 Intent intent = new Intent(QuizCategoriesActivity.this, QuizQuestionsActivity.class);
                 intent.putExtra("quiz", 2);
                 startActivity(intent);
@@ -73,6 +88,9 @@ public class QuizCategoriesActivity extends AppCompatActivity {
         btn_goPro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                editor.putString(KEY_PROG, quizLevelEasy.lastAttempt().toString());
+                editor.apply();
+
                 Intent intent = new Intent(QuizCategoriesActivity.this, QuizQuestionsActivity.class);
                 intent.putExtra("quiz", 1);
                 startActivity(intent);
@@ -81,9 +99,12 @@ public class QuizCategoriesActivity extends AppCompatActivity {
         btn_go_hc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(QuizCategoriesActivity.this, HighscoreActivity.class);
+                Intent intent = new Intent(QuizCategoriesActivity.this, LastScoreActivity.class);
                 startActivity(intent);
             }
         });
+
     }
+
+
 }

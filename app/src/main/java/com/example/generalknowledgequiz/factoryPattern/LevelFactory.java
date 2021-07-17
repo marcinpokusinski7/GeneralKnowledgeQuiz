@@ -1,5 +1,8 @@
 package com.example.generalknowledgequiz.factoryPattern;
 
+import android.content.Context;
+import android.widget.TextView;
+
 public class LevelFactory {
 
     public QuizLevel getLevel(int level) {

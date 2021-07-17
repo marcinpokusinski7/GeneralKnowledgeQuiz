@@ -9,26 +9,21 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.generalknowledgequiz.QuizCategoriesActivity;
-import com.example.generalknowledgequiz.QuizQuestionsActivity;
 import com.example.generalknowledgequiz.R;
 
 import java.util.List;
 
-public class HighscoreActivity extends AppCompatActivity {
+public class LastScoreActivity extends AppCompatActivity {
     private static final String SHARED_PREF_SCORE = "latestScore";
     private static final String SHARED_PREF_QUIZ_TYPE = "quizType";
     SharedPreferences sharedPreferences;
 
     List<LatestScore> scores;
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_highscore);
+        setContentView(R.layout.activity_last_score);
 
         RecyclerView scoresView = findViewById(R.id.rvScores);
         Button back_hc = findViewById(R.id.btn_back_hc);

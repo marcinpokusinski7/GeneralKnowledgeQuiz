@@ -10,7 +10,6 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -19,7 +18,6 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.generalknowledgequiz.adapterPattern.HighscoreActivity;
 import com.example.generalknowledgequiz.db.Question;
 import com.example.generalknowledgequiz.db.QuizDbHelper;
 
@@ -29,6 +27,7 @@ import java.util.List;
 public class QuizQuestionsActivity extends AppCompatActivity {
     private static final String SHARED_PREF_SCORE = "latestScore";
     private static final String SHARED_PREF_QUIZ_TYPE = "quizType";
+
 
 
     private TextView tv_question;
@@ -78,7 +77,7 @@ public class QuizQuestionsActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
        catId = intent.getIntExtra("quiz", 0);
-        System.out.println("----------------------------------------------------------------------------------" +catId);
+
        if(catId == 1){
            questionList = dbHelper.getQuestions(1);
        }else{
@@ -185,6 +184,7 @@ public class QuizQuestionsActivity extends AppCompatActivity {
             editor.putString(SHARED_PREF_QUIZ_TYPE, "General");
         }
         editor.apply();
+
         finish();
     }
 

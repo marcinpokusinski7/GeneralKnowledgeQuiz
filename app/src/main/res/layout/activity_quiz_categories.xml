@@ -54,12 +54,22 @@
                     android:textStyle="bold" />
 
                 <TextView
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Easy questions for start"
+                    android:text="General questions"
                     android:textColor="#7A8089"
                     android:textSize="16sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/attemptGeneral"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Last Attempt: "
+                    android:textColor="#7A8089"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <Button
@@ -111,6 +121,15 @@
                     android:text="Programming"
                     android:textColor="#7A8089"
                     android:textSize="16sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/attemptProgramming"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Last Attempt: "
+                    android:textColor="#7A8089"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <Button

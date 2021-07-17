@@ -35,6 +35,7 @@ public class QuizDbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         this.db = db;
 
+
         final String SQL_CREATE_CATEGORIES_TABLE = "CREATE TABLE " +
                 QuizContract.CategoriesTable.TABLE_NAME + "( " +
                 QuizContract.CategoriesTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
