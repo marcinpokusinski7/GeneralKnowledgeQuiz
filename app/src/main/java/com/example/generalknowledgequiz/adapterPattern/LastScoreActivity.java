@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -17,7 +18,7 @@ public class LastScoreActivity extends AppCompatActivity {
     private static final String SHARED_PREF_SCORE = "latestScore";
     private static final String SHARED_PREF_QUIZ_TYPE = "quizType";
     SharedPreferences sharedPreferences;
-
+    int lastScore, best1, best2, best3;
     List<LatestScore> scores;
 
     @Override
@@ -35,9 +36,8 @@ public class LastScoreActivity extends AppCompatActivity {
         scores = new LatestScore().createScoreList(10);
 
 
-
         ScoreAdapter adapter = new ScoreAdapter(scores);
-        scores.add(1, new LatestScore(sharedPreferences.getString(SHARED_PREF_QUIZ_TYPE, null)+": ", score));
+        scores.add(1, new LatestScore(sharedPreferences.getString(SHARED_PREF_QUIZ_TYPE, null) + ": ", score));
 
         scoresView.setAdapter(adapter);
 

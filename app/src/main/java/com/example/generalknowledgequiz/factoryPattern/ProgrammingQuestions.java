@@ -13,6 +13,7 @@ import com.example.generalknowledgequiz.QuizQuestionsActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.TimeZone;
 
 public class ProgrammingQuestions implements QuizLevel{
 
@@ -24,7 +25,8 @@ public class ProgrammingQuestions implements QuizLevel{
 
     @Override
     public String lastAttempt() {
-        Calendar c = Calendar.getInstance();
+        TimeZone timeZone = TimeZone.getTimeZone("GMT+2");
+        Calendar c = Calendar.getInstance(timeZone);
         SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         String dateCurrent = df.format(c.getTime());
         return "Last attempt: " +dateCurrent;

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class QuizDbHelper extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME = "testd.db";
+    private static final String DATABASE_NAME = "questions.db";
     private static final int DATABASE_VERSION = 1;
     //signleton
     private static QuizDbHelper instance;
@@ -100,8 +100,36 @@ public class QuizDbHelper extends SQLiteOpenHelper {
         addQuestion(q4);
         Question q5 = new Question("Which British actor will play Batman in the upcoming reboot directed by Matt Reeves?", "Hanz Zimmer", "Robert Pattinson", "Arnold Schwarzenegger", "Jean Claude Van Damme", 2, Category.GENERAL);
         addQuestion(q5);
-        Question q6 = new Question("Which British actor will play Batman in the upcoming reboot directed by Matt Reeves?", "Hanz Zimmer", "Robert Pattinson", "Arnold Schwarzenegger", "Jean Claude Van Damme", 2, Category.PROGRAMMING);
+        Question q6 = new Question("Which of the following statements are TRUE regarding JAVA?" +
+                " (a) Constants that cannot be changed are declared using the ‘static’ keyword." +
+                " (b) A class can only inherit one class but can implement multiple interfaces.",
+                "Only (a) is true", "Only (b) is TRUE", "Both are true", "Neither are TRUE.", 2, Category.PROGRAMMING);
         addQuestion(q6);
+        Question q7 = new Question(
+                "public static void main(String[] args){\n" +
+                        " Double object = new Double(2.4);\n" +
+                        "int a = object.intValue();\n" +
+                        "byte b = object.byteValue();\n" +
+                        "float d = object.floatValue();\n" +
+                        "double c = object.doubleValue();\n" +
+                        "System.out.println(a + b + c + d );\n" +
+                        "}",
+                "8", "8.8", "8.99", "8.800000095367432", 4, Category.PROGRAMMING);
+        addQuestion(q7);
+        Question q8 = new Question("public static void main(String args[]) {\n" +
+                "int t;\n" +
+                "System.out.println(t);\n" +
+                "}\n",
+                "0", "garbage value", "compiler error", "runtime error", 3, Category.PROGRAMMING);
+        addQuestion(q8);
+        Question q9 = new Question("Which of the following is/are advantages of packages?",
+                "Packages avoid name clashes", "Classes, even though they are visible outside their package, can have fields visible to packages only",
+                "We can have hidden classes that are used by the packages, but not visible outside.", "All of the above", 4, Category.PROGRAMMING);
+        addQuestion(q9);
+        Question q10 = new Question("Which one of the following is correct?",
+                "Java applets can not be written in any programming language", "An applet is not a small program",
+                "An applet can be run on its own", "Applets are embedded in another applications", 4, Category.PROGRAMMING);
+        addQuestion(q10);
     }
 
     private void addQuestion(Question question) {
