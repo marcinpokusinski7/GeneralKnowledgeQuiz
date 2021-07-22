@@ -50,6 +50,14 @@
                     android:textColor="#363A43"
                     android:layout_marginTop="10dp"
                     android:textColorHint="#7A8089" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/text_nickname"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Nickname"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#363A43"
+                    android:textColorHint="#7A8089" />
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/text_password"

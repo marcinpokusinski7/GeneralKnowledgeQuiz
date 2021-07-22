@@ -18,7 +18,6 @@ public class LastScoreActivity extends AppCompatActivity {
     private static final String SHARED_PREF_SCORE = "latestScore";
     private static final String SHARED_PREF_QUIZ_TYPE = "quizType";
     SharedPreferences sharedPreferences;
-    int lastScore, best1, best2, best3;
     List<LatestScore> scores;
 
     @Override

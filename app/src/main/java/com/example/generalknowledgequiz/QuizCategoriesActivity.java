@@ -2,6 +2,7 @@ package com.example.generalknowledgequiz;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -68,7 +69,6 @@ public class QuizCategoriesActivity extends AppCompatActivity {
             difficulty_text.setText("Hello " + intent.getStringExtra("name") +
                     ",\nchoose difficulty");
         }
-
 
         general.setText(new StringBuilder().append(quizLevelEasy.difficultyLevel().toString()));
         programming.setText(new StringBuilder().append(quizProgramming.difficultyLevel().toString()));

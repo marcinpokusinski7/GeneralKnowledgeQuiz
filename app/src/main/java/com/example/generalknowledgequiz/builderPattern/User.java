@@ -8,16 +8,15 @@ import com.example.generalknowledgequiz.RegisterFragment;
 
 public class User {
     private String login;
+    private String nickname;
     private String password;
     private String email;
 
-    @Override
-    public String toString() {
-        return login;
-    }
+
 
     public static final class Builder {
         private String login;
+        private String nickname;
         private String password;
         private String email;
 
@@ -26,7 +25,10 @@ public class User {
             this.login = login;
             return this;
         }
-
+        public Builder setNickname(final String nickname) {
+            this.nickname = nickname;
+            return this;
+        }
 
         public Builder setPassword(final String password) {
             this.password = password;
@@ -44,9 +46,12 @@ public class User {
 
             User user = new User();
             user.login = this.login;
+            user.nickname = this.nickname;
             user.password = this.password;
             user.email = this.email;
             return user;
         }
     }
+    @Override
+    public String toString() { return nickname; }
 }

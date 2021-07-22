@@ -20,7 +20,7 @@ public class RegisterFragment extends Fragment {
     private static final String SHARED_PREF_NAME = "mypref";
     private static final String KEY_USER = "user";
 
-    EditText login, password, email;
+    EditText login, password, email, nickname;
     Button signIn;
 
     SharedPreferences sharedPreferences;
@@ -35,6 +35,7 @@ public class RegisterFragment extends Fragment {
         final View view = inflater.inflate(R.layout.fragment_register, container, false);
 
         login = view.findViewById(R.id.text_login);
+        nickname = view.findViewById(R.id.text_nickname);
         password = view.findViewById(R.id.text_password);
         email = view.findViewById(R.id.text_email);
         signIn = view.findViewById(R.id.btn_signin);
@@ -51,6 +52,7 @@ public class RegisterFragment extends Fragment {
                 } else {
                     User user = new User.Builder()
                             .setLogin(login.getText().toString())
+                            .setNickname(nickname.getText().toString())
                             .setPassword(password.getText().toString())
                             .setEmail(email.getText().toString())
                             .create();

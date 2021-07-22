@@ -14,16 +14,12 @@ import java.util.List;
 public class QuizDbHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "questions.db";
     private static final int DATABASE_VERSION = 1;
-    //signleton
+
     private static QuizDbHelper instance;
-
     private SQLiteDatabase db;
-
-    //signleton
-    private QuizDbHelper(Context context) { // to not make any new objects, just to return the same
+    private QuizDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
-
     public static synchronized QuizDbHelper getInstance(Context context) {
         if (instance == null) {
             instance = new QuizDbHelper(context.getApplicationContext());//for whole app
