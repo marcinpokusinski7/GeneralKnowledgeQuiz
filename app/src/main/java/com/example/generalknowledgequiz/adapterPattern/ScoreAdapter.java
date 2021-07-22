@@ -17,10 +17,9 @@ import java.util.List;
 
 public class ScoreAdapter extends
         RecyclerView.Adapter<ScoreAdapter.ViewHolder> {
-
-
     private List<LatestScore> listScore;
-    public ScoreAdapter(List<LatestScore> scores){
+
+    public ScoreAdapter(List<LatestScore> scores) {
         listScore = scores;
     }
 
@@ -39,10 +38,10 @@ public class ScoreAdapter extends
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull ScoreAdapter.ViewHolder holder, int position) {
-    LatestScore score = listScore.get(position);
+        LatestScore score = listScore.get(position);
 
-    TextView textView = holder.nameTextView;
-    textView.setText(score.getQuizType()+ score.getScore());
+        TextView textView = holder.nameTextView;
+        textView.setText(score.getQuizType() + score.getScore());
 
     }
 

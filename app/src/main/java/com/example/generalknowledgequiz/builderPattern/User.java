@@ -12,8 +12,6 @@ public class User {
     private String password;
     private String email;
 
-
-
     public static final class Builder {
         private String login;
         private String nickname;
@@ -35,15 +33,12 @@ public class User {
             return this;
         }
 
-
         public Builder setEmail(final String email) {
             this.email = email;
             return this;
         }
 
-
         public User create() {
-
             User user = new User();
             user.login = this.login;
             user.nickname = this.nickname;

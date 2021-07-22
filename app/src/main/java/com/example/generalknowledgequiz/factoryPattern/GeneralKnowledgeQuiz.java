@@ -12,7 +12,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.TimeZone;
 
-public class GeneralKnowledge implements QuizLevel {
+public class GeneralKnowledgeQuiz implements QuizLevel {
     @Override
     public String difficultyLevel() {
         return "General Quiz";

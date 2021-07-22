@@ -48,7 +48,7 @@ public class QuizCategoriesActivity extends AppCompatActivity {
         btn_go_hc = findViewById(R.id.btn_go_hc);
 
         LevelFactory levelFactory = new LevelFactory();
-        QuizLevel quizLevelEasy = levelFactory.getLevel(1);
+        QuizLevel quizGeneral = levelFactory.getLevel(1);
         QuizLevel quizProgramming = levelFactory.getLevel(3);
 
 
@@ -70,14 +70,14 @@ public class QuizCategoriesActivity extends AppCompatActivity {
                     ",\nchoose difficulty");
         }
 
-        general.setText(new StringBuilder().append(quizLevelEasy.difficultyLevel().toString()));
+        general.setText(new StringBuilder().append(quizGeneral.difficultyLevel().toString()));
         programming.setText(new StringBuilder().append(quizProgramming.difficultyLevel().toString()));
 
 
         btn_easy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                editor.putString(KEY_GEN, quizLevelEasy.lastAttempt().toString());
+                editor.putString(KEY_GEN, quizGeneral.lastAttempt().toString());
                 editor.apply();
 
                 Intent intent = new Intent(QuizCategoriesActivity.this, QuizQuestionsActivity.class);
@@ -88,7 +88,7 @@ public class QuizCategoriesActivity extends AppCompatActivity {
         btn_goPro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                editor.putString(KEY_PROG, quizLevelEasy.lastAttempt().toString());
+                editor.putString(KEY_PROG, quizGeneral.lastAttempt().toString());
                 editor.apply();
 
                 Intent intent = new Intent(QuizCategoriesActivity.this, QuizQuestionsActivity.class);
